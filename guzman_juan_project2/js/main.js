@@ -29,15 +29,16 @@ window.addEventListener("DOMContenLoaded", function(){
 	function scheduledLeads(){
 		var id 				= Math.floor(Math.random()*100000001);
 		var item			= {};
-		item.fname			= ["First Name", $('fname').value];
-		item.lname			= ["Last Name", $('lname').value];
-		item.contactNum		= ["Contact Number", $('contactNum').value];
-		item.contactType	= ["Contact Type", $('contactType').value];
-		item.date			= ["Date", $('date').value];
-		item.time 			= ["Preferred Time", timeValue];
-		item.interest		= ["Interest Level", $('interestLevel')];
-		item.leadSource		= ["Lead Source", $('leadSources')];
-		item.comments		= ["Comments", $('comments')];
+			item.fname			= ["First Name", $('fname').value];
+			item.lname			= ["Last Name", $('lname').value];
+			item.contactNum		= ["Contact Number", $('contactNum').value];
+			item.contactType	= ["Contact Type", $('contactType').value];
+			item.date			= ["Date", $('date').value];
+			item.time 			= ["Preferred Time", timeValue];
+			item.interest		= ["Interest Level", $('interestLevel')];
+			item.leadSource		= ["Lead Source", $('leadSources')];
+			item.comments		= ["Comments", $('comments')];
+		localStorage.setItem(id, JSON.stringify(item))
 	}
 	
 	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"];
