@@ -26,6 +26,10 @@ window.addEventListener("DOMContenLoaded", function(){
 	}
 	
 	
+	function scheduleLead(){
+		
+	}
+	
 	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"];
 	makeSourceOpt();
 	
