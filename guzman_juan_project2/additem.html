@@ -36,7 +36,7 @@
 						</select>
 					</li>
 					<li><label for="date">Schedule Call Date</label><input type="date" id="date"/></li>
-					<li>Preferred Time:
+					<li><label for="time" id="time">Preferred Time:</label>
 						<ul>
 							<li><input type="radio" value="Morning" id="Morning" name="preference"/><label for="Morning">Morning</label></li>
 							<li><input type="radio" value="Afternoon" id="Afternoon" name="preference"/><label for="Afternoon">Afternoon</label></li>
@@ -44,7 +44,7 @@
 							<li><input type="radio" value="Anytime" id="Anytime" name="preference"/><label for="Anytime">Anytime</label></li>
 						</ul>
 					</li>
-					<li><label for="interestLevel">Select Interest Level:</label>
+					<li><label for="interestLevel" id="interestLevel">Select Interest Level:</label>
 						<ul>
 							<li>0<input id="slider" type="range" min="0" max="10" step="1" value="5" onchange="updateSlider(this.value)"/>10</li>
 						</ul>

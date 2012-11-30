@@ -26,8 +26,18 @@ window.addEventListener("DOMContenLoaded", function(){
 	}
 	
 	
-	function scheduleLead(){
-		
+	function scheduledLeads(){
+		var id 				= Math.floor(Math.random()*100000001);
+		var item			= {};
+		item.fname			= ["First Name", $('fname').value];
+		item.lname			= ["Last Name", $('lname').value];
+		item.contactNum		= ["Contact Number", $('contactNum').value];
+		item.contactType	= ["Contact Type", $('contactType').value];
+		item.date			= ["Date", $('date').value];
+		item.time 			= ["Preferred Time", timeValue];
+		item.interest		= ["Interest Level", $('interestLevel')];
+		item.leadSource		= ["Lead Source", $('leadSources')];
+		item.comments		= ["Comments", $('comments')];
 	}
 	
 	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"];
@@ -38,7 +48,7 @@ window.addEventListener("DOMContenLoaded", function(){
 	var clearData = $('clearData');
 	clearData.addEventListener("click", clearData);
 	var scheduleButton = $('submit');
-	scheduleButton.addEventListener("click", scheduleLead);
+	scheduleButton.addEventListener("click", scheduledLeads);
 	
 	
 	
