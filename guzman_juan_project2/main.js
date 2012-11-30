@@ -10,8 +10,26 @@ window.addEventListener("DOMContenLoaded", function(){
 	}	
 	
 	
+	function makeSourceOpt(){
+		var formTag = document.getElementsByTagName("form"),
+			selectLi = $('leadSource'),
+			makeSelect = document.createElement('select');
+			makeSelect.setAttribute("id", "leadSources");
+		for (var i=0, j=sources.length; i<j; i++){
+			
+		}			
+	}
+	
+	
+	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"];
+	
+	
 	var displayAll = $('displayAll');
-	displayAll.addEventListener()
+	displayAll.addEventListener("click", getData);
+	var clearData = $('clearData');
+	clearData.addEventListener("click", clearData);
+	var scheduleButton = $('submit');
+	scheduleButton.addEventListener("click", scheduleLead);
 	
 	
 	
