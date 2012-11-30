@@ -25,6 +25,14 @@ window.addEventListener("DOMContenLoaded", function(){
 		selectLi.appendChild(makeSelect);			
 	}
 	
+	function getSelectedRadio(){
+		var radio = document.forms(0).preference;
+		for(var i=0; i<radios.length; i++){
+			if(radios[i].checked){
+				preferencevalue = radios[i].value;	
+			}
+		}
+	}
 	
 	function scheduledLeads(){
 		var id 				= Math.floor(Math.random()*100000001);
@@ -38,7 +46,8 @@ window.addEventListener("DOMContenLoaded", function(){
 			item.interest		= ["Interest Level", $('interestLevel')];
 			item.leadSource		= ["Lead Source", $('leadSources')];
 			item.comments		= ["Comments", $('comments')];
-		localStorage.setItem(id, JSON.stringify(item))
+		localStorage.setItem(id, JSON.stringify(item));
+		alert("Callback Scheduled")
 	}
 	
 	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"];
