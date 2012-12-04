@@ -54,6 +54,21 @@ window.addEventListener("DOMContenLoaded", function(){
 			item.comments		= ["Comments", $('comments')];
 		localStorage.setItem(id, JSON.stringify(item));
 		alert("Callback Scheduled")
+	}	
+	// Get Data to write on browser and display to user.
+	
+	function getData(){
+		var makeDiv = document.createElement('div');
+		makeDiv.setAttribute("id", "items");
+		var makeList = document.createElement('ul');
+		makeDiv.appendChild(makeList);
+		for (var i=0, len=localStorage.length; i<len; i++){
+			var makeLi = document.createElement('li');
+			makeList.appendChild(makeLi);
+			var key = localStorage.key(i);
+			var value = localStorage.getItem(key);
+			var obj = JSON.parse(value);
+		}
 	}
 	
 	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"],
