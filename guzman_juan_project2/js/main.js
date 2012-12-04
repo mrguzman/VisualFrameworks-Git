@@ -2,7 +2,7 @@
 // Visual Frameworks 
 // By Juan J Guzman
 
-window.addEventListener("DOMContenLoaded", function(){
+window.addEventListener("DOMContentLoaded", function(){
 
 	// getElementById function
 	
