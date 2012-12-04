@@ -62,12 +62,21 @@ window.addEventListener("DOMContenLoaded", function(){
 		makeDiv.setAttribute("id", "items");
 		var makeList = document.createElement('ul');
 		makeDiv.appendChild(makeList);
+		document.body.appendChild(makeDiv);
 		for (var i=0, len=localStorage.length; i<len; i++){
 			var makeLi = document.createElement('li');
 			makeList.appendChild(makeLi);
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
 			var obj = JSON.parse(value);
+			var makeSublist = document.createElement('ul');
+			makeLi.appendChild(makeSublist);
+			for (var n in obj){
+				var makeSubLi = document.createElement('li');
+				makeSublist.appendChild(makeSubLi);
+				var optSubText = obj[n][0]+" "+obj[n][1];
+				makeSubLi.innerHTML = optSubText;
+			}
 		}
 	}
 	
