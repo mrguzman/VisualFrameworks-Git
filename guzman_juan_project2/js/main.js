@@ -4,11 +4,14 @@
 
 window.addEventListener("DOMContenLoaded", function(){
 
+	// getElementById function
+	
 	function $(x){
 		var theElement = document.getElementById(x);
 		return theElement	
 	}	
 	
+	//Populate field options for lead source
 	
 	function makeSourceOpt(){
 		var formTag = document.getElementsByTagName("form"),
@@ -25,8 +28,10 @@ window.addEventListener("DOMContenLoaded", function(){
 		selectLi.appendChild(makeSelect);			
 	}
 	
+	// Find the selected Radio and return value
+	
 	function getSelectedRadio(){
-		var radio = document.forms(0).preference;
+		var radios = document.forms(0).preference;
 		for(var i=0; i<radios.length; i++){
 			if(radios[i].checked){
 				preferencevalue = radios[i].value;	
@@ -36,6 +41,7 @@ window.addEventListener("DOMContenLoaded", function(){
 	
 	function scheduledLeads(){
 		var id 				= Math.floor(Math.random()*100000001);
+			getSelectedRadio();
 		var item			= {};
 			item.fname			= ["First Name", $('fname').value];
 			item.lname			= ["Last Name", $('lname').value];
@@ -50,7 +56,9 @@ window.addEventListener("DOMContenLoaded", function(){
 		alert("Callback Scheduled")
 	}
 	
-	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"];
+	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"],
+		preferencevalue
+		;
 	makeSourceOpt();
 	
 	var displayAll = $('displayAll');
@@ -59,6 +67,8 @@ window.addEventListener("DOMContenLoaded", function(){
 	clearData.addEventListener("click", clearData);
 	var scheduleButton = $('submit');
 	scheduleButton.addEventListener("click", scheduledLeads);
+	
+	
 	
 	
 	
