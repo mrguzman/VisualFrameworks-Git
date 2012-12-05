@@ -85,8 +85,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 
 	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"],
-		preferencevalue
-		;
+		timevalue
+;
 	makeSourceOpt();
 	
 	var displayAll = $('displayAll');
