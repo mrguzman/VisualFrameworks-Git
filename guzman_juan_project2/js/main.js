@@ -60,10 +60,12 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
-	function scheduledLeads(){
+	// Save to Local Storage
+	
+	function saveLeads(){
 		var id 				= Math.floor(Math.random()*100000001);
 			getSelectedRadio();
-		var item			= {};
+		var item				= {};
 			item.fname			= ["First Name:", $('fname').value];
 			item.lname			= ["Last Name:", $('lname').value];
 			item.contactNum		= ["Contact Number:", $('contactNum').value];
@@ -75,13 +77,16 @@ window.addEventListener("DOMContentLoaded", function(){
 			item.comments		= ["Comments:", $('comments').value];
 		localStorage.setItem(id, JSON.stringify(item));
 		alert("Callback Scheduled");
-	}	
-	
+	}
+		
 	
 	// Get Data to write on browser and display to user.
 	
 	function getData(){
 		toggleControls("on");
+		if (localStorage.length === 0){
+			alert("No Leads Are Currently Scheduled");
+		}
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "items");
 		var makeList = document.createElement('ul');
@@ -106,19 +111,32 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 	
-
+	function clearData(){
+		if(localStorage.length === 0){
+			alert("No Leads Are Currently Scheduled")
+		}else {
+			localStorage.clear();
+				alert("All Leads Are Deleted");
+				window.location.reload();
+				return false;
+		}
+	}
+	
+	// Dropdown variable defaults
+ 
 	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"],
 		timevalue
 ;
-	/*makeSourceOpt();*/
+	makeSourceOpt();
+	
+	//Navigation controls and links
 	
 	var displayAll = $('displayAll');
 	displayAll.addEventListener("click", getData);
 	var clearLeads = $('clearLeads');
 	clearLeads.addEventListener("click", clearData);
 	var scheduleButton = $('submit');
-	scheduleButton.addEventListener("click", scheduledLeads);
-	
+	scheduleButton.addEventListener("click", saveLeads);
 
 	
 	
