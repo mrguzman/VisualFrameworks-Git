@@ -3,7 +3,6 @@
 // By Juan J Guzman
 
 window.addEventListener("DOMContentLoaded", function(){
-
 	// getElementById function
 	
 	function $(x){
@@ -39,6 +38,28 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
+	//Add Toggle Controls
+	
+	function toggleControls(n){
+		switch(n){
+			case "on":
+				$('scheduleForm').style.display = "none";
+				$('clearLeads').style.display = "inline";
+				$('displayAll').style.display = "none";
+				$('newLead').style.display = "inline";
+				break;
+			case "off":
+				$('scheduleForm').style.display = "block";
+				$('clearLeads').style.display = "inline";
+				$('displayAll').style.display = "inline";
+				$('newLead').style.display = "none";
+				$('items').style.display = "none";
+				break;
+			default:
+				return false;
+		}
+	}
+	
 	function scheduledLeads(){
 		var id 				= Math.floor(Math.random()*100000001);
 			getSelectedRadio();
@@ -60,11 +81,13 @@ window.addEventListener("DOMContentLoaded", function(){
 	// Get Data to write on browser and display to user.
 	
 	function getData(){
+		toggleControls("on");
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "items");
 		var makeList = document.createElement('ul');
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
+		$('items').style.display = "block";
 		for (var i=0, len=localStorage.length; i<len; i++){
 			var makeLi = document.createElement('li');
 			makeList.appendChild(makeLi);
@@ -87,12 +110,12 @@ window.addEventListener("DOMContentLoaded", function(){
 	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"],
 		timevalue
 ;
-	makeSourceOpt();
+	/*makeSourceOpt();*/
 	
 	var displayAll = $('displayAll');
 	displayAll.addEventListener("click", getData);
-	var clearData = $('clearData');
-	clearData.addEventListener("click", clearData);
+	var clearLeads = $('clearLeads');
+	clearLeads.addEventListener("click", clearData);
 	var scheduleButton = $('submit');
 	scheduleButton.addEventListener("click", scheduledLeads);
 	
