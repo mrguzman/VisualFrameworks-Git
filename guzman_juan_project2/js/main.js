@@ -34,7 +34,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var radios = document.forms(0).preference;
 		for(var i=0; i<radios.length; i++){
 			if(radios[i].checked){
-				preferencevalue = radios[i].value;	
+				timeValue = radios[i].value;	
 			}
 		}
 	}
@@ -43,18 +43,20 @@ window.addEventListener("DOMContentLoaded", function(){
 		var id 				= Math.floor(Math.random()*100000001);
 			getSelectedRadio();
 		var item			= {};
-			item.fname			= ["First Name", $('fname').value];
-			item.lname			= ["Last Name", $('lname').value];
-			item.contactNum		= ["Contact Number", $('contactNum').value];
-			item.contactType	= ["Contact Type", $('contactType').value];
-			item.date			= ["Date", $('date').value];
-			item.time 			= ["Preferred Time", timeValue];
-			item.interest		= ["Interest Level", $('interestLevel')];
-			item.leadSource		= ["Lead Source", $('leadSources')];
-			item.comments		= ["Comments", $('comments')];
+			item.fname			= ["First Name:", $('fname').value];
+			item.lname			= ["Last Name:", $('lname').value];
+			item.contactNum		= ["Contact Number:", $('contactNum').value];
+			item.contactType	= ["Contact Type:", $('contactType').value];
+			item.date			= ["Date:", $('date').value];
+			item.time 			= ["Preferred Time:", timeValue];
+			item.interest		= ["Interest Level:", $('interestLevel').value];
+			item.leadSource		= ["Lead Source:", $('leadSources').value];
+			item.comments		= ["Comments:", $('comments').value];
 		localStorage.setItem(id, JSON.stringify(item));
-		alert("Callback Scheduled")
+		alert("Callback Scheduled");
 	}	
+	
+	
 	// Get Data to write on browser and display to user.
 	
 	function getData(){
@@ -80,6 +82,8 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
+	
+
 	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"],
 		preferencevalue
 		;
@@ -92,6 +96,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	var scheduleButton = $('submit');
 	scheduleButton.addEventListener("click", scheduledLeads);
 	
+
 	
 	
 	
