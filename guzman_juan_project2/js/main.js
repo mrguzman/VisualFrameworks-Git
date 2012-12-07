@@ -25,7 +25,21 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 		selectLi.appendChild(makeSelect);			
 	}
+
+	// Dropdown variable defaults
+ 
+	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"],
+		timevalue;
+		
+	makeSourceOpt();
+
+	//Navigation controls and links
 	
+	var displayAll = $('displayAll');
+	displayAll.addEventListener("click", getData);
+	var clearLeads = $('clearLeads');
+	clearLeads.addEventListener("click", clearData);
+
 	// Find the selected Radio and return value
 	
 	function getSelectedRadio(){
@@ -193,21 +207,36 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
-	// Dropdown variable defaults
- 
-	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"],
-		timevalue;
-		
-	makeSourceOpt();
+	function validate(){
+		var getFname = $('fname');
+		var getLname = $('lname');
+		var getNum = $('contactNum');
+		var messageAry = [];
+		if (getFname.value === ""){
+			var fNameError = "Please Enter a First Name";
+			getFname.style.border ="1px solid red";
+			messageAry.push(fNameError);
+		}
+			if (getLname.value === ""){
+			var lNameError = "Please Enter a Last Name";
+			getLname.style.border ="1px solid red";
+			messageAry.push(lNameError);
+		}
+			if (getNum.value === ""){
+			var numError = "Please Enter a First Name";
+			getNum.style.border ="1px solid red";
+			messageAry.push(numError);
+		}
+	}
 	
-	//Navigation controls and links
+	if (messageAry.length >= 1){
+		for (var i=0, j=messageAry.length; i < j; i++)
+	}
+
 	
-	var displayAll = $('displayAll');
-	displayAll.addEventListener("click", getData);
-	var clearLeads = $('clearLeads');
-	clearLeads.addEventListener("click", clearData);
+	
 	var scheduleButton = $('submit');
-	scheduleButton.addEventListener("click", saveLeads);
+	scheduleButton.addEventListener("click", validate);
 
 	
 	
