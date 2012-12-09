@@ -26,24 +26,11 @@ window.addEventListener("DOMContentLoaded", function(){
 		selectLi.appendChild(makeSelect);			
 	}
 
-	// Dropdown variable defaults
- 
-	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"],
-		timevalue;
-		
-	makeSourceOpt();
-
-	//Navigation controls and links
-	
-	var displayAll = $('displayAll');
-	displayAll.addEventListener("click", getData);
-	var clearLeads = $('clearLeads');
-	clearLeads.addEventListener("click", clearData);
 
 	// Find the selected Radio and return value
 	
 	function getSelectedRadio(){
-		var radios = document.forms(0).preference;
+		var radios = document.forms[0].preference;
 		for(var i=0; i<radios.length; i++){
 			if(radios[i].checked){
 				var timeValue = radios[i].value;	
@@ -75,9 +62,13 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	// Save to Local Storage (Something is broken here)
 	
-	function saveLeads(){
-		var id 					= Math.floor(Math.random()*100000001);
-			 getSelectedRadio();
+	function saveLeads(key){
+		if(!key){
+			var id 					= Math.floor(Math.random()*100000001);
+		}else{
+			var id = key;
+		}
+		getSelectedRadio();
 		var item				= {};
 			item.fname			= ["First Name:", $('fname').value];
 			item.lname			= ["Last Name:", $('lname').value];
@@ -124,7 +115,9 @@ window.addEventListener("DOMContentLoaded", function(){
 			}
 			makeItemLinks(localStorage.key(i), linksLi); 
 		}
+
 	}
+	
 	
 	//Make Item links function. Create edit/delete for each item in local storage.
 	
@@ -179,13 +172,12 @@ window.addEventListener("DOMContentLoaded", function(){
 		$('interestLevel').value = item.interestLevel[1];
 		$('leadSources').value = item.leadSources[1];
 		$('comments').value = item.comments[1];
-	}; 
-	
+		
 		//Remove Listener from "Schedule Callback" button
 		
 		scheduleButton.removeEventListener("click", saveLeads);
 		
-		//Change "Schedule Callback" to "Edit Callback"
+				//Change "Schedule Callback" to "Edit Callback"
 		
 		$('submit').value = "Edit Callback";
 		var editScheduleButton = $('submit');
@@ -193,8 +185,19 @@ window.addEventListener("DOMContentLoaded", function(){
 		editScheduleButton.key = this.key;
 		 
 
-
-
+	} 
+	
+	
+	function deleteLead(){
+		var confirmDel = confirm("Are you sure you wish to delete Callback?");
+		if (ask){
+			localStorage.removeItem(this.key);
+			window.location.reload();
+			alert("Callback Deleted") 
+		}else{
+			alert("Delete Cancelled")
+		}
+	}
 	
 	function clearData(){
 		if(localStorage.length === 0){
@@ -207,48 +210,73 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
-	function validate(){
+	
+	//Validate information before allowing user to proceed.
+	
+	function validate(e){
 		var getFname = $('fname');
 		var getLname = $('lname');
 		var getNum = $('contactNum');
+		
+		//reset messages
+		errMessage.innerHTML = "";
+		getFname.style.border ="1px solid black";
+		getLname.style.border ="1px solid black";
+		getNum.style.border ="1px solid black";
+			
+		//Get Error message
 		var messageAry = [];
+		
+		//Validate First Name
 		if (getFname.value === ""){
-			var fNameError = "Please Enter a First Name";
+			var fNameError = "Please Enter A First Name";
 			getFname.style.border ="1px solid red";
 			messageAry.push(fNameError);
 		}
+		//Validate last Name
 			if (getLname.value === ""){
-			var lNameError = "Please Enter a Last Name";
+			var lNameError = "Please Enter A Last Name";
 			getLname.style.border ="1px solid red";
 			messageAry.push(lNameError);
 		}
+		//Validate Contact Number
 			if (getNum.value === ""){
-			var numError = "Please Enter a First Name";
+			var numError = "Please Enter A Contact Number";
 			getNum.style.border ="1px solid red";
 			messageAry.push(numError);
 		}
-	}
-	
-	if (messageAry.length >= 1){
-		for (var i=0, j=messageAry.length; i < j; i++){
-			var text = document.createElement('li');
-			text.innerHTML = messageAry[i];
-			$
+		
+		//Display Errors, create <li> html
+		if (messageAry.length >=  1){
+			for (var i=0, j=messageAry.length; i < j; i++){
+				var text = document.createElement('li');
+				text.innerHTML = messageAry[i];
+				errMessage.appendChild(text);
+			}
+			e.preventDafault();
+			return false;
+		}else{
+			saveLeads(this.key);
 		}
+		
 	}
-
+	
+	// Variables
+ 
+	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"],
+		timevalue,
+		errMessage = $('errors')
+	;	
+	makeSourceOpt();
 	
 	
+	//Navigation controls and links
+	var displayAll = $('displayAll');
+	displayAll.addEventListener("click", getData);
+	var clearLeads = $('clearLeads');
+	clearLeads.addEventListener("click", clearData);
 	var scheduleButton = $('submit');
 	scheduleButton.addEventListener("click", validate);
 
-	
-	
-	
-	
-	
-	
-	
-	
 	
 });
