@@ -10,18 +10,19 @@ window.addEventListener("DOMContentLoaded", function(){
 		return theElement;	
 	}	
 	
+			
 	//Populate field options for lead sources
 	function makeSourceOpt(){
 		var formTag = document.getElementsByTagName("form"),
 			selectLi = $('leadSource'),
 			makeSelect = document.createElement('select');
 			makeSelect.setAttribute("id", "leadSources");
-		for (var i=0, j= sources.length; i<j; i++){
+		for (var i=0, j = sources.length; i<j; i++){
 			var makeOpt = document.createElement('option');
 			var optText = sources[i];
 			makeOpt.setAttribute("value", optText);
 			makeOpt.innerHTML = optText;
-			makeSelect.appendChild(makeOpt);
+			makeSelect.appendChild(makeOpt)
 		}
 		selectLi.appendChild(makeSelect);			
 	}
@@ -64,7 +65,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	function saveLeads(key){
 		if(!key){
-			var id 					= Math.floor(Math.random()*100000001);
+			var id = Math.floor(Math.random()*100000001);
 		}else{
 			var id = key;
 		}
@@ -105,7 +106,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			var value = localStorage.getItem(key);
 			var obj = JSON.parse(value);
 			var makeSubList = document.createElement('ul');
-			makeLi.appendChild(makeSublist);
+			makeLi.appendChild(makeSubList);
 			for (var n in obj){
 				var makeSubLi = document.createElement('li');
 				makeSublist.appendChild(makeSubLi);
@@ -193,9 +194,9 @@ window.addEventListener("DOMContentLoaded", function(){
 		if (ask){
 			localStorage.removeItem(this.key);
 			window.location.reload();
-			alert("Callback Deleted") 
+			alert("Callback Deleted"); 
 		}else{
-			alert("Delete Cancelled")
+			alert("Delete Cancelled");
 		}
 	}
 	
@@ -265,12 +266,12 @@ window.addEventListener("DOMContentLoaded", function(){
  
 	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"],
 		timevalue,
-		errMessage = $('errors')
-	;	
+		errMessage = $('errors');
+	
 	makeSourceOpt();
 	
-	
 	//Navigation controls and links
+	
 	var displayAll = $('displayAll');
 	displayAll.addEventListener("click", getData);
 	var clearLeads = $('clearLeads');
