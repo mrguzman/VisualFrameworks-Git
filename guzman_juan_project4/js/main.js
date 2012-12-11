@@ -108,6 +108,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			var obj = JSON.parse(value);
 			var makeSubList = document.createElement('ul');
 			makeLi.appendChild(makeSubList);
+			getImage(obj.sources[1], makeSubList);
 			for (var n in obj){
 				var makeSubLi = document.createElement('li');
 				makeSublist.appendChild(makeSubLi);
@@ -119,6 +120,19 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 
 	}
+	
+	
+/*	//Category image function
+	
+	function getImage(leadImage, makeSubLi){
+		var imageLi = document.createElement('li');
+		makeSubList.appendChild(imageLi);
+		var newImage = document.createElement('img');
+		var setSrc = newImage.setAttribute("src", "image/"+ leadImage +".png");
+		imageLi.appendChild(newImage);
+	}
+	
+	*/
 	
 	//Auto Load default test callbacks
 	
@@ -188,7 +202,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		
 		scheduleButton.removeEventListener("click", saveLeads);
 		
-				//Change "Schedule Callback" to "Edit Callback"
+		//Change "Schedule Callback" to "Edit Callback"
 		
 		$('submit').value = "Edit Callback";
 		var editScheduleButton = $('submit');
