@@ -121,8 +121,7 @@ window.addEventListener("DOMContentLoaded", function(){
 
 	}
 	
-	
-/*	//Category image function
+		//Category image function
 	
 	function getImage(leadImage, makeSubLi){
 		var imageLi = document.createElement('li');
@@ -132,7 +131,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		imageLi.appendChild(newImage);
 	}
 	
-	*/
+
 	
 	//Auto Load default test callbacks
 	
