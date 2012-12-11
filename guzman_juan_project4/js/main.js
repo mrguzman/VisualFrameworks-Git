@@ -277,7 +277,7 @@ window.addEventListener("DOMContentLoaded", function(){
 				text.innerHTML = messageAry[i];
 				errMessage.appendChild(text);
 			}
-			e.preventDafault();
+			e.preventDefault();
 			return false;
 		}else{
 			saveLeads(this.key);
@@ -288,7 +288,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	// Variables
  
 	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"],
-		timevalue,
+		timeValue,
 		errMessage = $('errors');
 	
 	makeSourceOpt();
