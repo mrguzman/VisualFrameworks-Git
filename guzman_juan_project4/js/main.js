@@ -31,7 +31,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	// Find the selected Radio and return value
 	
 	function getSelectedRadio(){
-		var radios = document.forms[0].preference;
+		var radios = document.forms[0].time;
 		for(var i=0; i<radios.length; i++){
 			if(radios[i].checked){
 				var timeValue = radios[i].value;	
@@ -61,7 +61,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
-	// Save to Local Storage (Something is broken here)
+	// Save to Local Storage 
 	
 	function saveLeads(key){
 		if(!key){
@@ -77,7 +77,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			item.contactType	= ["Contact Type:", $('contactType').value];
 			item.date			= ["Date:", $('date').value];
 			item.time 			= ["Preferred Time:", timeValue];
-			item.interest		= ["Interest Level:", $('interestLevel').value];
+			item.interestLevel	= ["Interest Level:", $('interestLevel').value];
 			item.leadSource		= ["Lead Source:", $('leadSources').value];
 			item.comments		= ["Comments:", $('comments').value];
 		localStorage.setItem(id, JSON.stringify(item));
@@ -108,7 +108,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			var obj = JSON.parse(value);
 			var makeSubList = document.createElement('ul');
 			makeLi.appendChild(makeSubList);
-		//	getImage(obj.leadSources[1], makeSubList);
+			getImage(obj.leadSource[1], makeSubList);
 			for (var n in obj){
 				var makeSubLi = document.createElement('li');
 				makeSubList.appendChild(makeSubLi);
@@ -125,7 +125,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	function getImage(leadImage, makeSubLi){
 		var imageLi = document.createElement('li');
-		makeSubList.appendChild(imageLi);
+		makeSubLi.appendChild(imageLi);
 		var newImage = document.createElement('img');
 		var setSrc = newImage.setAttribute("src", "image/"+ leadImage + ".png");
 		imageLi.appendChild(newImage);
@@ -167,6 +167,9 @@ window.addEventListener("DOMContentLoaded", function(){
 		
 	}
 	
+	
+	//Edit leads
+	
 	function editLead(){
 		//Grab data from Local storage
 		var value = localStorage.getItem(this.key);
@@ -183,20 +186,20 @@ window.addEventListener("DOMContentLoaded", function(){
 		$('contactNum').value = item.contactNum[1];
 		$('contactType').value = item.contactType[1];
 		$('date').value = item.date[1];
-		var radios = document.forms[0].preference;
+		var radios = document.forms[0].time;
 		for (var i=0 ; i<radios.length; i++){
-			if (radios[i].value == "Morning" && item.preference[1] == "Morning") {
+			if (radios[i].value == "Morning" && item.time[1] == "Morning") {
 				radios[i].setAttribute("checked", "checked");
-			}else if(radios[i].value =="Afternoon" && item.preference[1] == "Afternoon"){
+			}else if(radios[i].value =="Afternoon" && item.time[1] == "Afternoon"){
 				radios[i].setAttribute("checked", "checked");
-			}else if(radios[i].value == "Evening" && item.preference[1] == "Evening"){
+			}else if(radios[i].value == "Evening" && item.time[1] == "Evening"){
 				radios[i].setAttribute("checked", "checked");
-			}else if(radios[i].value == "Anytime" && item.preference[1] == "Anytime"){
+			}else if(radios[i].value == "Anytime" && item.time[1] == "Anytime"){
 				radios[i].setAttribute("checked", "checked");
 			}
 		}
 		$('interestLevel').value = item.interestLevel[1];
-		$('leadSources').value = item.leadSources[1];
+		$('leadSources').value = item.leadSource[1];
 		$('comments').value = item.comments[1];
 		
 		//Remove Listener from "Schedule Callback" button
