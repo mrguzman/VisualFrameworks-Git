@@ -34,7 +34,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var radios = document.forms[0].time;
 		for(var i=0; i<radios.length; i++){
 			if(radios[i].checked){
-				var timeValue = radios[i].value;	
+				timeValue = radios[i].value;	
 			}
 		}
 	}
