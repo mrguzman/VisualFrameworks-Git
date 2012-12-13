@@ -1,15 +1,23 @@
-/*
+html, body {
+	height: 100%;
+}
 
-Title: Styles for additem.html
-By: Juan J Guzman
-Visual Frameworks
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #1A1A1A;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12pt;
+	color: #828282;
+}
 
-*/
 
 
 
 
-body {background: #c3c3c3; font-family: Arial, Helvitica, san-sarif; width: 571px; margin: auto:padding; 10px }
-#content{width: 480px; height: 690px; overflow: scroll;}
 
-h1{font-size: 25px;}
+
+
+
+
+
