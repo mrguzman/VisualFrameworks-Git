@@ -108,10 +108,10 @@ window.addEventListener("DOMContentLoaded", function(){
 			var obj = JSON.parse(value);
 			var makeSubList = document.createElement('ul');
 			makeLi.appendChild(makeSubList);
-			getImage(obj.sources[1], makeSubList);
+		//	getImage(obj.leadSources[1], makeSubList);
 			for (var n in obj){
 				var makeSubLi = document.createElement('li');
-				makeSublist.appendChild(makeSubLi);
+				makeSubList.appendChild(makeSubLi);
 				var optSubText = obj[n][0]+" "+obj[n][1];
 				makeSubLi.innerHTML = optSubText;
 				makeSubList.appendChild(linksLi);
@@ -127,7 +127,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var imageLi = document.createElement('li');
 		makeSubList.appendChild(imageLi);
 		var newImage = document.createElement('img');
-		var setSrc = newImage.setAttribute("src", "image/"+ leadImage +".png");
+		var setSrc = newImage.setAttribute("src", "image/"+ leadImage + ".png");
 		imageLi.appendChild(newImage);
 	}
 	
@@ -143,7 +143,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 	
-	//Make Item links function. Create edit/delete for each item in local storage.
+	//Create edit/delete links for each item in local storage.
 	
 	function makeItemLinks(key, linksLi){
 		var editLink = document.createElement('a');
@@ -163,7 +163,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var deleteText = "Delete Callback";
 		deleteLink.addEventListener("click", deleteLead);
 		deleteLink.innerHTML = deleteText;
-		deleteLink.appendChild(deleteLink);
+		linksLi.appendChild(deleteLink);
 		
 	}
 	
@@ -173,9 +173,11 @@ window.addEventListener("DOMContentLoaded", function(){
 		var item = JSON.parse(value);
 		
 		//unhide Form
+		
 		toggleControls("off");
 		
-		//populate form with value 
+		//populate form with value
+		 
 		$('fname').value = item.fname[1];
 		$('lname').value = item.lname[1];
 		$('contactNum').value = item.contactNum[1];
@@ -214,7 +216,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	function deleteLead(){
 		var confirmDel = confirm("Are you sure you wish to delete Callback?");
-		if (ask){
+		if (confirmDel){
 			localStorage.removeItem(this.key);
 			window.location.reload();
 			alert("Callback Deleted"); 
