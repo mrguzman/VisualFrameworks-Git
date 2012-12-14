@@ -1,15 +1,36 @@
-html, body {
-	height: 100%;
+/*
+Title: CSS Style for form.html
+by: Juan J Guzman
+Project 4
+12/13/2012
+*/
+
+
+*{	font-family: Arial, sans-serif;
+	font-size: 16px;
+	line-height: 1em;
 }
 
 body {
-	margin: 0px;
-	padding: 0px;
-	background: #1A1A1A;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 12pt;
-	color: #828282;
+	margin: 20px, 20px;
+	padding: 1px, 1px;
+	border: 4px, #e90000;
+	background: #a4a5bb;
+	color: white;
+	
 }
+
+
+h1 {
+	margin: 2px, 2px;
+	padding: 2px, 2px;
+	background: #303c7f;
+	font-size: 24px;
+
+}
+
+a:visited{color: blue}
+
 
 
 
