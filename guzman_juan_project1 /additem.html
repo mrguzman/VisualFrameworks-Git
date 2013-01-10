@@ -9,12 +9,32 @@
 		<meta name="robots" content="index, follow" />
 		<meta name="viewport" content="user-scalable=no, width=device-width" />
 		
-		<title>Schedule A Callback</title>
+		<title>The Ultimate Lead Dashboard</title>
 	
 	</head>
 	
 	<body>
-	
+		<header>
+			<hgroup>
+				<h1>Lead Dashboard</h1>
+				<h2>Schedule a callback</h2>
+			</hgroup>
+		</header>
+		<nav>
+			<a href="#" id="clearLeads">Clear All Leads</a>
+			<a href="#" id="displayAll">Display All Current Leads</a>
+			<a href="additem.html" id="newLead" style="display:none;">Add New Lead</a>
+		</nav>
+		<form action="" method="post" id="scheduleForm">
+			<fieldset>
+				<legend>Primary Leads</legend>
+				
+				<ul id="errors"></ul>
+				<ul>
+					<li><label for="fname">First Name:</label><input type="text" id="fname"/></li>
+				</ul>
+			</fieldset>
+		</form>
 	</body>
 
 
