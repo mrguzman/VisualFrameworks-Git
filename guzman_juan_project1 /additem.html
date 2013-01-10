@@ -32,6 +32,33 @@
 				<ul id="errors"></ul>
 				<ul>
 					<li><label for="fname">First Name:</label><input type="text" id="fname"/></li>
+					<li><label for="lname">Last Name:</label><input type="text" id="lname"/></li>
+					<li><label for="contactNum">Contact Number:</label><input type="text" id="contactNum"/></li>
+					<li>
+						<label for="contactType">Contact Type:</label>
+						<select id="contactType">
+							<optgroup label="Select One">
+								<option value="home">Home</option>
+								<option value="cell">Cell</option>
+								<option value="Work">work</option>
+							</optgroup>
+						</select>
+					</li>
+					<li><label for="setDate">Schedule A Call Date:</label><input type="date" id="date"/></li>
+					<li><label for="timeOfDay">Preferred Time Of day:</label>
+						<ul>
+							<li><input type="radio" value="morning" id="morning" name="timeOfDay"/><label for="morning">Morning</label></li>
+							<li><input type="radio" value="afternoon" id="afternoon" name="timeOfDay"/><label for="afternoon">Afternoon</label></li>
+							<li><input type="radio" value="evening" id="evening" name="timeOfDay"/><label for="evening">Evening</label></li>
+							<li><input type="radio" value="anytime" id="anytime" name="timeOfDay"/><label for="anytime">Anytime</label></li>
+						</ul>
+					</li>
+					<li><label for="interestLevel">Select Interest Level:</label>
+						<ul>
+							<li><label for="interestLevel">0</label><input type="range" min="0" max="10" id="interestLevel"/>10</li>
+						</ul>
+					</li>
+
 				</ul>
 			</fieldset>
 		</form>
