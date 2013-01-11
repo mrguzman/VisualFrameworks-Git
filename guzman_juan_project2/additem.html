@@ -1,0 +1,82 @@
+<!--Doctype-->
+<!--The Ultimate Lead Dashboard-->
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="The Ultimate Lead Dashboard" />
+		<meta name="keywords" content="Project 1, Full Sail University, Visual Frame Works" />
+		<meta name="robots" content="index, follow" />
+		<meta name="viewport" content="user-scalable=no, width=device-width" />
+		
+		<title>The Ultimate Lead Dashboard</title>
+	
+	</head>
+	
+	<body>
+		<header>
+			<hgroup>
+				<h1>Lead Dashboard</h1>
+				<h2>Schedule a callback</h2>
+			</hgroup>
+		</header>
+		<nav>
+			<a href="#" id="clearLeads">Clear All Leads</a>
+			<a href="#" id="displayAll">Display All Current Leads</a>
+			<a href="additem.html" id="newLead" style="display:none;">Add New Lead</a>
+		</nav>
+		<form action="" method="post" id="scheduleForm">
+			<fieldset>
+				<legend>Primary Leads</legend>
+				
+				<ul id="errors"></ul>
+				<ul>
+					<li><label for="fname">First Name:</label><input type="text" id="fname"/></li>
+					<li><label for="lname">Last Name:</label><input type="text" id="lname"/></li>
+					<li><label for="contactNum">Contact Number:</label><input type="text" id="contactNum"/></li>
+					<li>
+						<label for="contactType">Contact Type:</label>
+						<select id="contactType">
+							<optgroup label="Select One">
+								<option value="home">Home</option>
+								<option value="cell">Cell</option>
+								<option value="Work">work</option>
+							</optgroup>
+						</select>
+					</li>
+					<li><label for="setDate">Schedule A Call Date:</label><input type="date" id="date"/></li>
+					<li><label for="timeOfDay">Preferred Time Of day:</label>
+						<ul>
+							<li><input type="radio" value="morning" id="morning" name="timeOfDay"/><label for="morning">Morning</label></li>
+							<li><input type="radio" value="afternoon" id="afternoon" name="timeOfDay"/><label for="afternoon">Afternoon</label></li>
+							<li><input type="radio" value="evening" id="evening" name="timeOfDay"/><label for="evening">Evening</label></li>
+							<li><input type="radio" value="anytime" id="anytime" name="timeOfDay"/><label for="anytime">Anytime</label></li>
+						</ul>
+					</li>
+					<li><label for="interestLevel">Select Interest Level:</label>
+						<ul>
+							<li><label for="interestLevel">0</label><input type="range" min="0" max="10" id="interestLevel"/>10</li>
+						</ul>
+					</li>
+					<li><label for="leadSource" id="leadSource">Select Lead Source:</label>
+						<select id="leadSource">
+							<optgroup label="leadSource">
+								<option value="walkIn">Walk-In</option>
+								<option value="referral">Referral</option>
+								<option value="responseToAd">Response To Ad</option>
+								<option value="coldCall">Cold Call</option>
+							</optgroup>
+						</select>
+					</li>
+				</ul>
+				<label for="comments">Comments:</label><textarea id="comments"></textarea>
+			</fieldset>
+			<input type="submit" value="Save Lead"/>
+		</form>
+	</body>
+
+
+
+
+
+</html>
