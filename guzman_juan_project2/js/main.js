@@ -20,17 +20,42 @@ window.addEventListener("DOMContentLoaded", function(){
 /*	var displayAll = $('displayAll');
 	displayAll.addEventListener("click", getData);
 	var clearAll = $('clearLeads');
-	clearAll.addEventListener("click", clearData);
-	var saveButton = $('submit');*/
+	clearAll.addEventListener("click", clearData);  */
+	var saveButton = $('submit');
 	saveButton.addEventListener("click", saveLead);
 	
+	
+	
+	//Dynamic dropdown for "Select Lead Source"
+	
+	function createDropdown(){
+		var grabTag = document.getElementsByTagName("form"),
+		grabLi = $('leadSource'),
+		createSelect = document.createElement('select');
+		createSelect.setAttribute("id", "leadSources");
+		for (var i=0, j = sources.length; i<j; i++){
+			var createOpt = document.createElement('option');
+			var optText = sources[i];
+			createOpt.setAttribute("value", optText);
+			createOpt.innerHTML = optText;
+			createSelect.appendChild(createOpt)
+		}
+		grabLi.appendChild(createSelect);
+	}
+	
+	
+	//Array to contain dropdown options.
+	
+	var sources = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"],
+					timeValue;
 	
 	
 	//Save info to local storage
 	
 	
 	function saveLead(){
-		var id = math.floor(Math.random()*1000000001);
+		var id = Math.floor(Math.random()*1000000001);
+		getRadio();
 		var item = {};
 			item.fname = ["First Name:", $('fname').value];
 			item.lname = ["Last Name:", $('lname').value];
@@ -48,6 +73,17 @@ window.addEventListener("DOMContentLoaded", function(){
 	} 
 	
 	
+	// Selected Radio button
+	
+	
+	function getRadio(){
+		var radios = document.forms[0].timeOfDay;
+		for(var i=0; i<radios.length; i++){
+			if(radios[i].checked){
+				timeValue = radios[i].value;
+			}
+		}
+	}
 	
 	
 	
