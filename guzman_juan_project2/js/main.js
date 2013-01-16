@@ -169,40 +169,41 @@ window.addEventListener("DOMContentLoaded", function(){
 	//Sort UL list....at least that is what I was trying to do.
 	
 	
-	function sortUnorderedList(ul, sortDescending) {
-	  if(typeof ul == "string"){
+	function sortList(ul, sortDescending) {
+	  if(typeof ul == 'string'){
 	    	ul = document.getElementById(ul);
-	    	}
-	 	  if(!ul) {
-		    alert("The UL object is null!");
-		    return;
-		  }
+	   
 		  
 	  // Get the list items and setup an array for sorting
-	  var lis = ul.getElementsByTagName("LI");
+	  
+	  var lis = ul.getElementsByTagName('li');
 	  var vals = [];
 	
 	  // Populate the array
+	  
 	  for(var i = 0, l = lis.length; i < l; i++)
 	    vals.push(lis[i].innerHTML);
 	
 	  // Sort it
+	  
 	  vals.sort();
 	
 	  // Descending
+	  
 	  if(sortDescending){
 	    	vals.reverse();
 	    	
 	    	}
 	
 	  // Change the list on the page
+	  
 	  for(var i = 0, l = lis.length; i < l; i++){
 	    lis[i].innerHTML = vals[i];
 	    }
 	}
 	
 	
-	
+	// sortList();
 	
 	
 
