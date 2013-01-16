@@ -166,7 +166,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 		
 		
-	//Sort UL list....at least that is what I was trying to do.
+	//Sort displayed data list....at least that is what I was trying to do.
 	
 	
 	function sortList(ul, sortDescending) {
@@ -203,7 +203,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 	
-	// sortList();
+	//sortLeadsButton.addEventListener("click", sortList);
 	
 	
 
