@@ -12,15 +12,6 @@ window.addEventListener("DOMContentLoaded", function(){
 		var htmlID = document.getElementById(x);
 		return htmlID;
 	}
-	
-	
-	
-// Controls to display and clear all leads
-	
-/*	var displayAll = $('displayAll');
-	displayAll.addEventListener("click", getData);
-	var clearAll = $('clearLeads');
-	clearAll.addEventListener("click", clearData);  */
 
 	
 	
@@ -43,7 +34,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	
 	
-//Array to contain dropdown options.
+	//Array to contain dropdown options.
 	
 	var leadType = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"],
 					timeValue;
@@ -51,7 +42,7 @@ window.addEventListener("DOMContentLoaded", function(){
 					createDropdown();
 					
 
-//Save info to local storage
+//Save info to LOCAL STORAGE and clear/display data to user.
 	
 	
 		var saveButton = $('submit');
@@ -70,8 +61,12 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	// Local Storage save function
 	
-	function saveLead(){
-		var id = Math.floor(Math.random()*1000000001);
+	function saveLead(key){
+		if (!key){
+			var id = Math.floor(Math.random()*1000000001);
+		}else{
+			var id = key;
+		}
 		getRadio();
 		var item = {};
 			item.fname = ["First Name:", $('fname').value];
@@ -81,13 +76,96 @@ window.addEventListener("DOMContentLoaded", function(){
 			item.date = ["Scheduled Date:", $('date').value];
 			item.timeOfDay = ["Preferred Time:", timeValue];
 			item.interestLevel = ["Interest Level", $('interestLevel').value];
-			item.leadSource = ["Lead Source:", $('leadSource').value];
+			item.leadSource = ["Lead Source:", $('leadtypes').value];
 			item.comments = ["Comments:", $('comments').value];
 			localStorage.setItem(id, JSON.stringify(item));
 			
 			alert("Callback Scheduled");
 		
-	} 
+	} 	
+	
+	
+	// Toggle controls to dynamically change how data is displayed to user
+
+	
+	function toggleControls(n){
+		switch(n){
+			case "on":
+				$('scheduleForm').style.display = "none";
+				$('clearLeads').style.display = "inline";
+				$('displayAll').style.display = "none";
+				$('newLead').style.display = "inline";
+				break;
+			case "off":
+				$('scheduleForm').style.display = "block";
+				$('clearLeads').style.display = "inline";
+				$('displayAll').style.display = "inline";
+				$('newLead').style.display = "none";
+				$('items').style.display = "none";
+				break;
+			default:
+				return false;
+		}
+	}
+	
+	
+	
+	//Display saved data to user when "Display All Current Leads" link is clicked.
+	
+	var displayAll = $('displayAll');
+	displayAll.addEventListener("click", getData);
+	
+	
+	function getData(){
+		toggleControls('on');
+		if (localStorage.length === 0){
+			alert("No Leads Currently Scheduled");			//If user clicks link but no leads are scheduled an alert displays "No Leads Currently Scheduled
+		}
+		var createDiv = document.createElement('div');		//Creates UL to dipslay data as a list item
+		createDiv.setAttribute('id', 'items');
+		var createUl = document.createElement('ul');
+		createDiv.appendChild(createUl);
+		document.body.appendChild(createDiv);
+		$('items').style.display = "block";
+		for (var i=0, len=localStorage.length; i<len; i++){		//Loops through key in local storage.
+			var createLi = document.createElement('li');
+			var linksLi = document.createElement('li'); 
+			createUl.appendChild(createLi);
+			var key = localStorage.key(i);
+			var value = localStorage.getItem(key);
+			var obj = JSON.parse(value);
+			var makeSubList = document.createElement('ul');
+			createLi.appendChild(makeSubList);
+			for (var n in obj){
+				var makeSubLi = document.createElement('li');
+				makeSubList.appendChild(makeSubLi);
+				var optSubText = obj[n][0]+" "+obj[n][1];
+				makeSubLi.innerHTML = optSubText;
+			
+			}
+			 
+		}
+
+	}
+	
+	//Clear All Data in storage.
+	
+	var clearAll = $('clearLeads');
+	clearAll.addEventListener("click", clearData);
+	
+	
+	function clearData(){
+		if(localStorage.length === 0){
+			alert("No Leads Are Currently Scheduled");
+		}else {
+			localStorage.clear();
+				alert("All Leads Are Deleted");
+				window.location.reload();
+				return false;
+			}
+		}
+	
+	
 	
 	
 
