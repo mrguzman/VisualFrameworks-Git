@@ -167,7 +167,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		
 /*
 		
-	//Sort displayed data list....at least that is what I was trying to do.
+	//Sort UL list....at least that is what I was trying to do.
 	
 		//Create Sort button when users selects "Display Leads"
 		
@@ -210,7 +210,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 	
-	//sortLeadsButton.addEventListener("click", sortList);
+	// sortList();
 	
 	
 
