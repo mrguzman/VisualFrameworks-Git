@@ -22,8 +22,8 @@
 			</hgroup>
 		</header>
 		<nav>
-			<a href="#" id="clearLeads">Clear All Leads</a>
 			<a href="#" id="displayAll">Display All Current Leads</a>
+			<a href="#" id="clearLeads">Clear All Leads</a>
 			<a href="additem.html" id="newLead" style="display:none;">Add New Lead</a>
 		</nav>
 		<form action="" method="post" id="scheduleForm">
@@ -39,19 +39,19 @@
 						<label for="contactType">Contact Type:</label>
 						<select id="contactType">
 							<optgroup label="Select One">
-								<option value="home">Home</option>
-								<option value="cell">Cell</option>
-								<option value="Work">work</option>
+								<option value="Home">Home</option>
+								<option value="Cell">Cell</option>
+								<option value="Work">Work</option>
 							</optgroup>
 						</select>
 					</li>
 					<li><label for="date">Schedule A Call Date:</label><input type="date" id="date"/></li>
 					<li><label for="timeOfDay">Preferred Time Of day:</label>
 						<ul>
-							<li><input type="radio" value="morning" id="morning" name="timeOfDay"/><label for="morning">Morning</label></li>
-							<li><input type="radio" value="afternoon" id="afternoon" name="timeOfDay"/><label for="afternoon">Afternoon</label></li>
-							<li><input type="radio" value="evening" id="evening" name="timeOfDay"/><label for="evening">Evening</label></li>
-							<li><input type="radio" value="anytime" id="anytime" name="timeOfDay"/><label for="anytime">Anytime</label></li>
+							<li><input type="radio" value="Morning" id="morning" name="timeOfDay"/><label for="morning">Morning</label></li>
+							<li><input type="radio" value="Afternoon" id="afternoon" name="timeOfDay"/><label for="afternoon">Afternoon</label></li>
+							<li><input type="radio" value="Evening" id="evening" name="timeOfDay"/><label for="evening">Evening</label></li>
+							<li><input type="radio" value="Anytime" id="anytime" name="timeOfDay"/><label for="anytime">Anytime</label></li>
 						</ul>
 					</li>
 					<li><label for="interestLevel">Select Interest Level:</label>
@@ -64,6 +64,7 @@
 				<label for="comments">Comments:</label><textarea id="comments"></textarea>
 			</fieldset>
 			<input type="submit" value="Save Lead" id="submit"/>
+			
 		</form>
 		
 		<script src="js/main.js" type="text/javascript"></script>

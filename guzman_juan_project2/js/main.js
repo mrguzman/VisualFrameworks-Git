@@ -48,7 +48,8 @@ window.addEventListener("DOMContentLoaded", function(){
 		var saveButton = $('submit');
 	saveButton.addEventListener("click", saveLead);
 
-	// Selected Radio button function to get value and save to local storage
+	// Selected 
+ button function to get value and save to local storage
 	
 	function getRadio(){
 		var radios = document.forms[0].timeOfDay;
@@ -141,9 +142,8 @@ window.addEventListener("DOMContentLoaded", function(){
 				makeSubList.appendChild(makeSubLi);
 				var optSubText = obj[n][0]+" "+obj[n][1];
 				makeSubLi.innerHTML = optSubText;
-			
+				makeSubList.appendChild(linksLi);
 			}
-			 
 		}
 
 	}
@@ -165,9 +165,16 @@ window.addEventListener("DOMContentLoaded", function(){
 			}
 		}
 		
+/*
 		
 	//Sort displayed data list....at least that is what I was trying to do.
 	
+		//Create Sort button when users selects "Display Leads"
+		
+		function sortLeadsButton(linksLi){
+			var createSort = document.createElement('input');
+			createSort.setAttribute("type", "button");
+		}
 	
 	function sortList(ul, sortDescending) {
 	  if(typeof ul == 'string'){
@@ -207,7 +214,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	
 
-	
+	*/
 	
 	
 });
