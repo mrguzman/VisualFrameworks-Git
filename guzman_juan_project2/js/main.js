@@ -48,8 +48,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var saveButton = $('submit');
 	saveButton.addEventListener("click", saveLead);
 
-	// Selected 
- button function to get value and save to local storage
+	// Selected button function to get value and save to local storage
 	
 	function getRadio(){
 		var radios = document.forms[0].timeOfDay;
