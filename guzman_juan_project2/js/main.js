@@ -34,7 +34,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	
 	
-	//Array to contain dropdown options.
+//Array to contain dropdown options.
 	
 	var leadType = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"],
 					timeValue;
@@ -42,7 +42,7 @@ window.addEventListener("DOMContentLoaded", function(){
 					createDropdown();
 					
 
-//Save info to LOCAL STORAGE and clear/display data to user.
+//Save info to local storage
 	
 	
 		var saveButton = $('submit');
@@ -61,12 +61,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	// Local Storage save function
 	
-	function saveLead(key){
-		if (!key){
-			var id = Math.floor(Math.random()*1000000001);
-		}else{
-			var id = key;
-		}
+	function saveLead(){
+		var id = Math.floor(Math.random()*1000000001);
 		getRadio();
 		var item = {};
 			item.fname = ["First Name:", $('fname').value];
@@ -207,6 +203,9 @@ window.addEventListener("DOMContentLoaded", function(){
 	    lis[i].innerHTML = vals[i];
 	    }
 	}
+=======
+	} 
+>>>>>>> parent of 0191210... Had "null" error for Lead Source dropdown.
 	
 	
 	// sortList();
