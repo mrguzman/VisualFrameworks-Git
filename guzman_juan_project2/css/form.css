@@ -1,0 +1,85 @@
+/*
+CSS Styles for additem.html
+Project 2
+Visual Frameworks January 2013
+by Juan Guzman
+*/
+
+
+
+
+body {
+	background-color:#eec;
+}
+
+h1{ 
+	background-color:#333;
+	height:50px;
+	color: #dc8;
+	padding: 20;
+	text-align: center;
+	font-family: Georgia;
+}
+
+h2{ 
+	width:100%;
+	background-color:#dc8; 
+	height:50px;
+	color: #333;
+	text-align: center;
+}
+
+label {
+	font-size: medium;
+    display:inline; 
+    padding-bottom:5px; 
+    margin-top:5px;
+}
+
+input {
+	display: inline;
+	font-size:12px;
+	padding:1px;
+	border:solid 1px #aacfe4;
+	margin:2px;
+}
+
+a {
+  display: block;
+  width: 110px;
+  height: 20px;
+  background: #dc8;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: black;
+  font-weight: bold;
+  padding: 20px;
+}
+ 
+
+fieldset { 
+	background-color:#7f7f7f; 
+}
+
+
+
+#items { }
+#items ul { 
+	list-style:none;
+	text-align:left;
+	border-top:1px solid #dc8; 
+	border-bottom:1px solid #dc8; 
+	padding:10px 0; 
+	background-color: #7f7f7f; 
+}
+#items ul li { 
+	display:inline-block;
+	text-transform:uppercase;
+	padding:0 5px;
+	letter-spacing:1px;
+}
+#items ul li a { 
+	text-decoration:none;
+	color:#dc8; 
+}
