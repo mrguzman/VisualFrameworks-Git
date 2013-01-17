@@ -202,10 +202,6 @@ window.addEventListener("DOMContentLoaded", function(){
 	  for(var i = 0, l = lis.length; i < l; i++){
 	    lis[i].innerHTML = vals[i];
 	    }
-	}
-=======
-	} 
->>>>>>> parent of 0191210... Had "null" error for Lead Source dropdown.
 	
 	
 	// sortList();
