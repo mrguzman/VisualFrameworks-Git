@@ -8,7 +8,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 //Function to help return HTML elements by their ID
 	
-	function $(x){
+	function autoGet(x){
 		var htmlID = document.getElementById(x);
 		return htmlID;
 	}
@@ -19,7 +19,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	function createDropdown(){
 		var grabTag = document.getElementsByTagName("form"),	//Targets <form></form> tag in additem.html
-		grabLi = $('leadSource'),								//Targets and grabs <li><label for="leadSource" id="leadSource">Select Lead Source:</label></li>
+		grabLi = autoGet('leadSource'),								//Targets and grabs <li><label for="leadSource" id="leadSource">Select Lead Source:</label></li>
 		createSelect = document.createElement('select');		//Creates <select></select> tags within <li></li>
 		createSelect.setAttribute("id", "leadtypes");				//Adds id="sources" to <select></select> (<select id="leadTypes"></select>)
 		for (var i=0, j = leadType.length; i<j; i++){			//Loops through "var = sources" and retrieves items in array
@@ -45,8 +45,14 @@ window.addEventListener("DOMContentLoaded", function(){
 //Save info to local storage
 	
 	
-		var saveButton = $('submit');
-	saveButton.addEventListener("click", saveLead);
+		var saveButton = autoGet('submit');
+	saveButton.addEventListener("click", required);
+	
+	//Validate required information before allowing user to proceed.
+	
+	
+	
+	
 
 	// Selected button function to get value and save to local storage
 	
@@ -65,15 +71,15 @@ window.addEventListener("DOMContentLoaded", function(){
 		var id = Math.floor(Math.random()*1000000001);
 		getRadio();
 		var item = {};
-			item.fname = ["First Name:", $('fname').value];
-			item.lname = ["Last Name:", $('lname').value];
-			item.contactNum = ["Contact Number:", $('contactNum').value];
-			item.contactType = ["Contact Type:", $('contactType').value];
-			item.date = ["Scheduled Date:", $('date').value];
+			item.fname = ["First Name:", autoGet('fname').value];
+			item.lname = ["Last Name:", autoGet('lname').value];
+			item.contactNum = ["Contact Number:", autoGet('contactNum').value];
+			item.contactType = ["Contact Type:", autoGet('contactType').value];
+			item.date = ["Scheduled Date:", autoGet('date').value];
 			item.timeOfDay = ["Preferred Time:", timeValue];
-			item.interestLevel = ["Interest Level", $('interestLevel').value];
-			item.leadSource = ["Lead Source:", $('leadtypes').value];
-			item.comments = ["Comments:", $('comments').value];
+			item.interestLevel = ["Interest Level", autoGet('interestLevel').value];
+			item.leadSource = ["Lead Source:", autoGet('leadtypes').value];
+			item.comments = ["Comments:", autoGet('comments').value];
 			localStorage.setItem(id, JSON.stringify(item));
 			
 			alert("Callback Scheduled");
@@ -87,17 +93,17 @@ window.addEventListener("DOMContentLoaded", function(){
 	function toggleControls(n){
 		switch(n){
 			case "on":
-				$('scheduleForm').style.display = "none";
-				$('clearLeads').style.display = "inline";
-				$('displayAll').style.display = "none";
-				$('newLead').style.display = "inline";
+				autoGet('scheduleForm').style.display = "none";
+				autoGet('clearLeads').style.display = "inline";
+				autoGet('displayAll').style.display = "none";
+				autoGet('newLead').style.display = "inline";
 				break;
 			case "off":
-				$('scheduleForm').style.display = "block";
-				$('clearLeads').style.display = "inline";
-				$('displayAll').style.display = "inline";
-				$('newLead').style.display = "none";
-				$('items').style.display = "none";
+				autoGet('scheduleForm').style.display = "block";
+				autoGet('clearLeads').style.display = "inline";
+				autoGet('displayAll').style.display = "inline";
+				autoGet('newLead').style.display = "none";
+				autoGet('items').style.display = "none";
 				break;
 			default:
 				return false;
@@ -108,7 +114,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	//Display saved data to user when "Display All Current Leads" link is clicked.
 	
-	var displayAll = $('displayAll');
+	var displayAll = autoGet('displayAll');
 	displayAll.addEventListener("click", getData);
 	
 	
@@ -122,7 +128,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var createUl = document.createElement('ul');
 		createDiv.appendChild(createUl);
 		document.body.appendChild(createDiv);
-		$('items').style.display = "block";
+		autoGet('items').style.display = "block";
 		for (var i=0, len=localStorage.length; i<len; i++){		//Loops through key in local storage.
 			var createLi = document.createElement('li');
 			var linksLi = document.createElement('li'); 
@@ -145,7 +151,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	//Clear All Data in storage.
 	
-	var clearAll = $('clearLeads');
+	var clearAll = autoGet('clearLeads');
 	clearAll.addEventListener("click", clearData);
 	
 	
