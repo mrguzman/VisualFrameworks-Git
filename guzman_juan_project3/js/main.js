@@ -55,7 +55,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var editButton = document.createElement('a');
 		editButton.href = "#";
 		editButton.key = key;
-		var editText = "Edit Callback";
+		var editText = "Edit Lead";
 		editButton.addEventListener("click", editLead);
 		editButton.innerHTML = editText;
 		linksLi.appendChild(editButton);
@@ -66,7 +66,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var deleteButton = document.createElement('a');
 		deleteButton.href = "#";
 		deleteButton.key = key;
-		var deleteText = "Delete Callback";
+		var deleteText = "Delete Lead";
 		deleteButton.addEventListener("click", deleteLead);
 		deleteButton.innerHTML = deleteText;
 		linksLi.appendChild(deleteButton);
@@ -98,24 +98,24 @@ window.addEventListener("DOMContentLoaded", function(){
 			}
 		}
 		autoGet('interestLevel').value = item.interestLevel[1];
-		autoGet('leadTypes').value = item.leadTypes[1];
+		autoGet('leadTypes').value = item.leadSource[1];
 		autoGet('comments').value = item.comments[1];
 	
 		
-		scheduleButton.removeEventListener("click", saveLead);
+		saveButton.removeEventListener("click", saveLead);
 		
 		
-		autoGet('submit').value = "Edit Callback";
-		var editScheduleButton = autoGet('submit');
-		editScheduleButton.addEventListener("click", required);
-		editScheduleButton.key = this.key;
+		autoGet('submit').value = "Edit Lead";
+		var editSaveButton = autoGet('submit');
+		editSaveButton.addEventListener("click", required);
+		editSaveButton.key = this.key;
 		 
 
 	}
 	
 	function deleteLead(){
 		var confirmDel = confirm("Are you sure you wish to delete this lead?");
-		if (ask){
+		if (confirmDel){
 			localStorage.removeItem(this.key);
 			window.location.reload();
 			alert("Callback Deleted"); 
@@ -185,8 +185,12 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	// Local Storage save function
 	
-	function saveLead(){
-		var id = Math.floor(Math.random()*1000000001);
+	function saveLead(key){
+		if(!key){
+			var id = Math.floor(Math.random()*100000001);
+		}else{
+			var id = key;
+		}
 		getRadio();
 		var item = {};
 			item.fname = ["First Name:", autoGet('fname').value];
@@ -200,7 +204,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			item.comments = ["Comments:", autoGet('comments').value];
 			localStorage.setItem(id, JSON.stringify(item));
 			
-			alert("Callback Scheduled");
+			alert("Callback Saved");
 		
 	} 	
 	
@@ -263,6 +267,7 @@ window.addEventListener("DOMContentLoaded", function(){
 				makeSubLi.innerHTML = optSubText;
 				makeSubList.appendChild(linksLi);
 			}
+			createLinks(localStorage.key(i), linksLi);
 		}
 
 	}
