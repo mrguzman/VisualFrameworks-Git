@@ -21,7 +21,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var grabTag = document.getElementsByTagName("form"),	//Targets <form></form> tag in additem.html
 		grabLi = autoGet('leadSource'),								//Targets and grabs <li><label for="leadSource" id="leadSource">Select Lead Source:</label></li>
 		createSelect = document.createElement('select');		//Creates <select></select> tags within <li></li>
-		createSelect.setAttribute("id", "leadtypes");				//Adds id="sources" to <select></select> (<select id="leadTypes"></select>)
+		createSelect.setAttribute("id", "leadTypes");				//Adds id="sources" to <select></select> (<select id="leadTypes"></select>)
 		for (var i=0, j = leadType.length; i<j; i++){			//Loops through "var = sources" and retrieves items in array
 			var createOpt = document.createElement('option');	//Creates <option></option> tag for each item in array
 			var optText = leadType[i];														
@@ -37,7 +37,8 @@ window.addEventListener("DOMContentLoaded", function(){
 //Array to contain dropdown options.
 	
 	var leadType = ["--Select Lead Source--", "Walk-In", "Referral", "Response to Ad", "Cold Call"],
-					timeValue;
+					timeValue,
+					flagMessage = autoGet('errors');
 					
 					createDropdown();
 					
@@ -48,9 +49,126 @@ window.addEventListener("DOMContentLoaded", function(){
 		var saveButton = autoGet('submit');
 	saveButton.addEventListener("click", required);
 	
-	//Validate required information before allowing user to proceed.
+	//Dynamically create individual button/links to edit and delete each item.
+	
+	function createLinks(key, linksLi){
+		var editButton = document.createElement('a');
+		editButton.href = "#";
+		editButton.key = key;
+		var editText = "Edit Callback";
+		editButton.addEventListener("click", editLead);
+		editButton.innerHTML = editText;
+		linksLi.appendChild(editButton);
+		
+		var breakTag = document.createElement("br");
+		linksLi.appendChild(breakTag);
+		
+		var deleteButton = document.createElement('a');
+		deleteButton.href = "#";
+		deleteButton.key = key;
+		var deleteText = "Delete Callback";
+		deleteButton.addEventListener("click", deleteLead);
+		deleteButton.innerHTML = deleteText;
+		linksLi.appendChild(deleteButton);
+		
+	}
+	
+	//Function to edit each item individually...(Yikes!)
+	
+	function editLead(){
+		var value = localStorage.getItem(this.key);
+		var item = JSON.parse(value);
+		toggleControls("off");
+		
+		autoGet('fname').value = item.fname[1];
+		autoGet('lname').value = item.lname[1];
+		autoGet('contactNum').value = item.contactNum[1];
+		autoGet('contactType').value = item.contactType[1];
+		autoGet('date').value = item.date[1];
+		var radios = document.forms[0].timeOfDay;
+		for (var i=0 ; i<radios.length; i++){
+			if (radios[i].value == "Morning" && item.timeOfDay[1] == "Morning") {
+				radios[i].setAttribute("checked", "checked");
+			}else if(radios[i].value =="Afternoon" && item.timeOfDay[1] == "Afternoon"){
+				radios[i].setAttribute("checked", "checked");
+			}else if(radios[i].value == "Evening" && item.timeOfDay[1] == "Evening"){
+				radios[i].setAttribute("checked", "checked");
+			}else if(radios[i].value == "Anytime" && item.timeOfDay[1] == "Anytime"){
+				radios[i].setAttribute("checked", "checked");
+			}
+		}
+		autoGet('interestLevel').value = item.interestLevel[1];
+		autoGet('leadTypes').value = item.leadTypes[1];
+		autoGet('comments').value = item.comments[1];
+	
+		
+		scheduleButton.removeEventListener("click", saveLead);
+		
+		
+		autoGet('submit').value = "Edit Callback";
+		var editScheduleButton = autoGet('submit');
+		editScheduleButton.addEventListener("click", required);
+		editScheduleButton.key = this.key;
+		 
+
+	}
+	
+	function deleteLead(){
+		var confirmDel = confirm("Are you sure you wish to delete this lead?");
+		if (ask){
+			localStorage.removeItem(this.key);
+			window.location.reload();
+			alert("Callback Deleted"); 
+		}else{
+			alert("Delete Cancelled");
+		}
+	}
 	
 	
+	
+	//Validate required information before allowing the user to proceed...
+	
+	function required(r){
+		var checkFname = autoGet('fname');
+		var checkLname = autoGet('lname');
+		var checkNum = autoGet('contactNum');
+		
+		flagMessage.innerHTML = "";
+		checkFname.style.border = "1px solid black";
+		checkLname.style.border = "1px solid black";
+		checkNum.style.border = "1px solid black";
+		
+		var flagArray = [];
+		if (checkFname.value === ""){
+			var fNameFlag = "Please Enter A First Name";
+			checkFname.style.border ="1px solid red";
+			flagArray.push(fNameFlag);
+		}
+			if (checkLname.value === ""){
+			var lNameFlag = "Please Enter A Last Name";
+			checkLname.style.border ="1px solid red";
+			flagArray.push(lNameFlag);
+		}
+			if (checkNum.value === ""){
+			var numFlag = "Please Enter A Contact Number";
+			checkNum.style.border ="1px solid red";
+			flagArray.push(numFlag);
+		}
+		if (flagArray.length >=  1){
+			for (var i=0, j=flagArray.length; i < j; i++){
+				var text = document.createElement('li');
+				text.innerHTML = flagArray[i];
+				flagMessage.appendChild(text);
+			}
+			r.preventDefault();
+			return false;
+		}else{
+			saveLead(this.key);
+		}
+		
+	}
+	
+	 
 	
 	
 
@@ -78,7 +196,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			item.date = ["Scheduled Date:", autoGet('date').value];
 			item.timeOfDay = ["Preferred Time:", timeValue];
 			item.interestLevel = ["Interest Level", autoGet('interestLevel').value];
-			item.leadSource = ["Lead Source:", autoGet('leadtypes').value];
+			item.leadSource = ["Lead Source:", autoGet('leadTypes').value];
 			item.comments = ["Comments:", autoGet('comments').value];
 			localStorage.setItem(id, JSON.stringify(item));
 			
