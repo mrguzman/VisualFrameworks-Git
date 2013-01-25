@@ -7,99 +7,15 @@ by Juan Guzman
 
 
 
-
-body {
-	background-color:#ebebc5;
-}
-
-h1{ 
-	background-color:#414141;
-	height:50px;
-	color: #d4c37e;
-	padding: 20;
-	text-align: center;
-	font-family: Georgia;
-}
-
-h2{ 
-	background-color:#d4c37e; 
-	height:50px;
-	color: black;
-	text-align: center;
-	padding: 5px;
-}
-
-label {
-	font-size: medium;
-	color: black; 
-    display:inline; 
-    padding-bottom:5px; 
-    margin-top:5px;
-}
-
-legend {
-  padding: 0.2em 0.5em;
-  border:1px solid #414141;
-  color: black;
-  font-size:90%;
-  text-align:right;
-  background-color: #939292;
-  }
-  
-
-input {
-	display: inline;
-	font-size:12px;
-	padding:1px;
-	border:solid 1px black;
-	margin:2px;
-}
-
-textarea {
-	display: inline;
-	font-size:12px;
-	padding:1px;
-	border:solid 1px black;
-	margin:2px;
-}
-
-a {
-  display: block;
-  width: 110px;
-  height: 10px;
-  background: #d4c37e;
-  padding: 15px;
-  text-align: center;
-  border-radius: 5px;
-  border: 1px solid black;
-  color: black;
-  font-weight: bold;
-}
- 
-
-fieldset { 
-	background-color:#7f7f7f;
-	border: 1px solid black; 
+fieldset {
+	margin:0;
+	padding:0;
+	border:0;
+	font-weight:inherit;
+	font-style:inherit;
+	font-size:100%;
+	font-family:inherit;
+	vertical-align:baseline; 
 }
 
 
-
-#items { }
-#items ul { 
-	list-style:none;
-	text-align:left;
-	border-top:1px solid #d4c37e; 
-	border-bottom:1px solid #d4c37e; 
-	padding:10px 0; 
-	background-color: #7f7f7f; 
-}
-#items ul li { 
-	display:inline-block;
-	text-transform:uppercase;
-	padding:0 5px;
-	letter-spacing:1px;
-}
-#items ul li a { 
-	text-decoration:none;
-	color:#d4c37e; 
-}

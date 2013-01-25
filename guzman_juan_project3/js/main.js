@@ -55,7 +55,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var editButton = document.createElement('a');
 		editButton.href = "#";
 		editButton.key = key;
-		var editText = "Edit Lead";
+		var editText = "Edit";
 		editButton.addEventListener("click", editLead);
 		editButton.innerHTML = editText;
 		linksLi.appendChild(editButton);
@@ -66,7 +66,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var deleteButton = document.createElement('a');
 		deleteButton.href = "#";
 		deleteButton.key = key;
-		var deleteText = "Delete Lead";
+		var deleteText = "Delete";
 		deleteButton.addEventListener("click", deleteLead);
 		deleteButton.innerHTML = deleteText;
 		linksLi.appendChild(deleteButton);
