@@ -243,7 +243,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	function getData(){
 		toggleControls('on');
 		if (localStorage.length === 0){
-			alert("No Leads Currently Scheduled");			//If user clicks link but no leads are scheduled an alert displays "No Leads Currently Scheduled
+			alert("No Leads Currently Scheduled. Place Holders have been loaded.");
+			loadPlaceHolder();
 		}
 		var createDiv = document.createElement('div');		//Creates UL to dipslay data as a list item
 		createDiv.setAttribute('id', 'items');
@@ -272,6 +273,15 @@ window.addEventListener("DOMContentLoaded", function(){
 
 	}
 	
+	//Load Place holder if no data has been saved in local storage
+	
+	function loadPlaceHolder (){
+		for (var n in placeHolder){
+			var id = Math.floor(Math.random()*100000001);
+			localStorage.setItem(id, JSON.stringify(placeHolder[n]));
+		}
+	}
+	
 	//Clear All Data in storage.
 	
 	var clearAll = autoGet('clearLeads');
@@ -289,55 +299,6 @@ window.addEventListener("DOMContentLoaded", function(){
 			}
 		}
 		
-/*
-		
-	//Sort UL list....at least that is what I was trying to do.
-	
-		//Create Sort button when users selects "Display Leads"
-		
-		function sortLeadsButton(linksLi){
-			var createSort = document.createElement('input');
-			createSort.setAttribute("type", "button");
-		}
-	
-	function sortList(ul, sortDescending) {
-	  if(typeof ul == 'string'){
-	    	ul = document.getElementById(ul);
-	   
-		  
-	  // Get the list items and setup an array for sorting
-	  
-	  var lis = ul.getElementsByTagName('li');
-	  var vals = [];
-	
-	  // Populate the array
-	  
-	  for(var i = 0, l = lis.length; i < l; i++)
-	    vals.push(lis[i].innerHTML);
-	
-	  // Sort it
-	  
-	  vals.sort();
-	
-	  // Descending
-	  
-	  if(sortDescending){
-	    	vals.reverse();
-	    	
-	    	}
-	
-	  // Change the list on the page
-	  
-	  for(var i = 0, l = lis.length; i < l; i++){
-	    lis[i].innerHTML = vals[i];
-	    }
-	
-	
-	// sortList();
-	
-	
-
-	*/
 	
 	
 });
