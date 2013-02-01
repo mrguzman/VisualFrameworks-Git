@@ -59,9 +59,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		editButton.addEventListener("click", editLead);
 		editButton.innerHTML = editText;
 		linksLi.appendChild(editButton);
-		
-		var breakTag = document.createElement("br");
-		linksLi.appendChild(breakTag);
+	
 		
 		var deleteButton = document.createElement('a');
 		deleteButton.href = "#";
@@ -261,6 +259,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			var obj = JSON.parse(value);
 			var makeSubList = document.createElement('ul');
 			createLi.appendChild(makeSubList);
+			loadImage(obj.leadSource[1], makeSubList);
 			for (var n in obj){
 				var makeSubLi = document.createElement('li');
 				makeSubList.appendChild(makeSubLi);
@@ -271,6 +270,16 @@ window.addEventListener("DOMContentLoaded", function(){
 			createLinks(localStorage.key(i), linksLi);
 		}
 
+	}
+	
+	// Load image content and create HMTL tags
+	
+	function loadImage (leadImage, makeSubLi){
+		var imageLi = document.createElement('li');
+		makeSubLi.appendChild(imageLi);
+		var createImage = document.createElement('img');
+		var setSrc = createImage.setAttribute("src", "image/"+ leadImage + ".png");
+		imageLi.appendChild(createImage);
 	}
 	
 	//Load Place holder if no data has been saved in local storage
